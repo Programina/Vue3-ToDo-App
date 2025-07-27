@@ -1,25 +1,50 @@
 <script setup>
-import ListItem from './ListItem.vue'
-import DocumentationIcon from './icons/IconDocumentation.vue'
-import ToolingIcon from './icons/IconTooling.vue'
-import EcosystemIcon from './icons/IconEcosystem.vue'
-import CommunityIcon from './icons/IconCommunity.vue'
-import SupportIcon from './icons/IconSupport.vue'
-import { todos } from '../stores/todos'
+import ListItem from "./ToDoListItem.vue";
+import { todos, doneTodos } from "../stores/todos";
 
+// Funktion: Aufgabe entfernen
+function removeTodo(index) {
+  todos.value.splice(index, 1);
+}
 
+function removeDoneTodo(index) {
+  doneTodos.value.splice(index, 1);
+}
+
+function doneTodo(index) {
+  doneTodos.value.push(todos.value[index]);
+  todos.value.splice(index, 1);
+}
+
+function undoneTodo(index) {
+  todos.value.push(doneTodos.value[index]);
+  doneTodos.value.splice(index, 1);
+}
 </script>
 
 <template>
-<ul>
-  <ListItem>
-    <template #heading></template>
-    <template #headingdone></template>
-    <template #description>Gib hier alle deine To Dos ein. </template>
-  </ListItem>
-</ul>
+  <div class="details">
+    <h2>
+      <slot name="heading">Open ToDos</slot>
+    </h2>
+    <p class="description">
+      <slot name="description"> </slot>
+    </p>
+  </div>
+  <ul v-for="(todo, index) in todos" :key="index">
+    <ListItem :todo="todo" @done="doneTodo(index)" @remove="removeTodo(index)"/>
+  </ul>
+    <div class="details">
+    <h2>
+      <slot name="heading">Done ToDos</slot>
+    </h2>
+    <p class="description">
+      <slot name="description"> </slot>
+    </p>
+  </div>
+  <ul v-for="(doneTodo, index) in doneTodos" :key="index">
+    <ListItem :todo="doneTodo" isChecked="true" @done="undoneTodo(index)" @remove="removeDoneTodo(index)"/>
+  </ul>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
