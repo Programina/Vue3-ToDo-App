@@ -1,21 +1,56 @@
+<script setup>
+import { ref } from "vue";
+import { todos, doneTodos } from "../stores/todos";
+import { defineProps, defineEmits } from 'vue'
+
+const emit = defineEmits(['remove']) // <- das fehlt
+
+const props = defineProps({
+  todos: {
+    type: Array,
+    required: true
+  }
+})
+</script>
+
 <template>
   <div class="item">
-    <i>
-      <slot name="icon"></slot>
-    </i>
     <div class="details">
-      <h3>
-        <slot name="heading"></slot>
-      </h3>
-      <slot></slot>
+      <h2>
+        <slot name="heading">Open ToDos</slot>
+      </h2>
+      <p class="description">
+        <slot name="description"> </slot>
+      </p>
+
+      <li v-for="(todo, index) in todos" :key="index">
+        <input type="checkbox" v-model="todo.done" />
+        <span :class="{ done: todo.done }">{{ todo.text }}</span>
+        <button @click="$emit('remove', index)">🗑️</button>
+      </li>
+    </div>
+    <br />
+    <br />
+    <div class="doneitems">
+      <h2>
+        <slot name="headingdone">Done ToDos</slot>
+      </h2>
+      <li v-for="(doneTodo, index) in doneTodos" :key="'done-' + index">
+        <span :class="{ done: doneTodo.done }">{{ doneTodo.text }}</span>
+      </li>
     </div>
   </div>
 </template>
 
 <style scoped>
+.done {
+  text-decoration: line-through;
+}
+
 .item {
   margin-top: 2rem;
   display: flex;
+  flex-direction: column;
   position: relative;
 }
 
@@ -58,7 +93,7 @@ h3 {
   }
 
   .item:before {
-    content: ' ';
+    content: " ";
     border-left: 1px solid var(--color-border);
     position: absolute;
     left: 0;
@@ -67,7 +102,7 @@ h3 {
   }
 
   .item:after {
-    content: ' ';
+    content: " ";
     border-left: 1px solid var(--color-border);
     position: absolute;
     left: 0;

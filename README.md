@@ -1,3 +1,19 @@
+Hi! You are looking at Amina's basic To Do app in Vue 3. 
+
+Features include: 
+
+* Input field to add new tasks (saved to local storage)
+* Full keyboard navigation support
+* Display user input as a dynamic task list
+* Edit list title/name
+* Delete the entire list
+* Reorder list items via drag and drop
+* Mark tasks as completed (checkbox support)
+* View completed tasks in a separate section
+* Toggle visibility of completed tasks
+* Responsive design using media breakpoints (mobile, tablet, desktop support)
+
+
 # vue-todo-app
 
 This template should help get you started developing with Vue 3 in Vite.
