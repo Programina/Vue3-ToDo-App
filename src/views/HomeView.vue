@@ -1,16 +1,11 @@
 <script setup>
-import ToDoList from "../components/ToDoList.vue";
+import ToDoView from "../components/ToDoView.vue";
 </script>
 
 <template>
   <main>
-    <h1>Meine barrierefreie To-Do-Liste</h1>
-    <ToDoList />
-    <!-- // <TodoInput @add-task="addTask" /> -->
-    <!-- <TodoList
-      :tasks="tasks"
-      @toggle-task="toggleTask"
-      @delete-task="deleteTask"
-    /> -->
+    <h1>Your To Dos</h1>
+    <ToDoView />
+
   </main>
 </template>

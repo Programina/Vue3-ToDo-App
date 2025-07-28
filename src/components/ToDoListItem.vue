@@ -1,45 +1,26 @@
 <script setup>
-import { ref } from "vue";
-import { todos, doneTodos } from "../stores/todos";
 import { defineProps, defineEmits } from 'vue'
 
-const emit = defineEmits(['remove']) // <- das fehlt
+const emit = defineEmits(['delete']) 
 
 const props = defineProps({
-  todos: {
-    type: Array,
+  todo: {
+    type: Object,
+    required: true
+  },
+  index: {
+    type: Number,
     required: true
   }
 })
 </script>
 
 <template>
-  <div class="item">
-    <div class="details">
-      <h2>
-        <slot name="heading">Open ToDos</slot>
-      </h2>
-      <p class="description">
-        <slot name="description"> </slot>
-      </p>
-
-      <li v-for="(todo, index) in todos" :key="index">
+  <li class="item">
         <input type="checkbox" v-model="todo.done" />
         <span :class="{ done: todo.done }">{{ todo.text }}</span>
-        <button @click="$emit('remove', index)">🗑️</button>
-      </li>
-    </div>
-    <br />
-    <br />
-    <div class="doneitems">
-      <h2>
-        <slot name="headingdone">Done ToDos</slot>
-      </h2>
-      <li v-for="(doneTodo, index) in doneTodos" :key="'done-' + index">
-        <span :class="{ done: doneTodo.done }">{{ doneTodo.text }}</span>
-      </li>
-    </div>
-  </div>
+        <button @click="$emit('delete', index)">🗑️</button>
+  </li>
 </template>
 
 <style scoped>
@@ -48,15 +29,12 @@ const props = defineProps({
 }
 
 .item {
-  margin-top: 2rem;
   display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.details {
-  flex: 1;
-  margin-left: 1rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 500px;
+  margin-top: 2rem;
 }
 
 i {

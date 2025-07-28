@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
-import ToDoInput from './components/ToDoInput.vue'
 
 
 
@@ -22,16 +21,13 @@ watch(tasks, () => {
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.png" width="125" height="125" />
+    <img alt="Vue logo" class="logo" src="@/assets/logo.png" width="80" height="80" />
 
-    <div class="wrapper">
-      <ToDoInput msg="To Do List App" />
-
-      <!-- <nav>
+    <!-- <div class="wrapper">
+      <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav> -->
-    </div>
+      </nav>
+    </div> -->
   </header>
 
   <RouterView />
@@ -39,15 +35,6 @@ watch(tasks, () => {
 
 <style scoped>
 
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
 
 nav {
   width: 100%;
