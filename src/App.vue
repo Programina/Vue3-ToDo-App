@@ -21,7 +21,10 @@ watch(tasks, () => {
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.png" width="80" height="80" />
+    <span class="left-header-group">
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="80" height="80" />
+      <h2>Your To Dos</h2>
+    </span>
 
     <!-- <div class="wrapper">
       <nav>
@@ -34,7 +37,11 @@ watch(tasks, () => {
 </template>
 
 <style scoped>
-
+.left-header-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
 nav {
   width: 100%;
@@ -63,13 +70,20 @@ nav a:first-of-type {
 
 @media (min-width: 1024px) {
   header {
+    position: absolute;
+    top: 0;
+    padding: 1rem 2.5rem;
     display: flex;
-    place-items: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
     padding-right: calc(var(--section-gap) / 2);
   }
 
   .logo {
     margin: 0 2rem 0 0;
+    width: 30px;
   }
 
   header .wrapper {
@@ -87,6 +101,6 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 
-  
+
 }
 </style>

@@ -14,7 +14,7 @@ function deleteTodo(index) {
   <div class="todo-view">
 
     <div class="left-view-wrapper">
-      <p>Manage your tasks efficiently!</p>
+      <h2>Manage your tasks efficiently!</h2>
       <!-- ToDoInput component for adding new tasks -->
       <ToDoInput />
     </div>
@@ -33,7 +33,7 @@ function deleteTodo(index) {
 
       <br />
 
-      <h2 v-if="doneTodos">Done ToDos</h2>
+      <h2 v-if="doneTodos.length > 0">Done ToDos</h2>
       <ul>
         <div class="doneitems">
           <ToDoListItem v-for="(todo, index) in doneTodos" :key="index" :todo="todo" :index="index"
@@ -54,6 +54,9 @@ function deleteTodo(index) {
 
 .left-view-wrapper {
   width: 100%;
+  height: 100%; 
+  margin-top: 0;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -61,6 +64,9 @@ function deleteTodo(index) {
 
 .right-view-wrapper {
   width: 100%;
+  height: 100%; 
+  margin-top: 0;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: left;

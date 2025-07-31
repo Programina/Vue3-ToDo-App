@@ -4,7 +4,6 @@ import ToDoView from "../components/ToDoView.vue";
 
 <template>
   <main>
-    <h1>Your To Dos</h1>
     <ToDoView />
 
   </main>

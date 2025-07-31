@@ -17,9 +17,9 @@ const props = defineProps({
 
 <template>
   <li class="item">
-        <input type="checkbox" v-model="todo.done" />
-        <span :class="{ done: todo.done }">{{ todo.text }}</span>
-        <button @click="$emit('delete', index)">🗑️</button>
+      <input type="checkbox" v-model="todo.done" />
+      <span :class="{ done: todo.done }">{{ todo.text }}</span>
+      <button @click="$emit('delete', index)"> Delete</button>
   </li>
 </template>
 
@@ -32,9 +32,25 @@ const props = defineProps({
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   min-width: 500px;
   margin-top: 2rem;
+
+  input {
+    margin-right: 1rem;
+    width: 20px;
+    height: 20px;
+  }
+
+  button {
+    margin-left: auto;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+
 }
 
 i {
@@ -56,7 +72,7 @@ h3 {
 @media (min-width: 1024px) {
   .item {
     margin-top: 0;
-    padding: 0.4rem 0 1rem calc(var(--section-gap) / 2);
+    /* padding: 0.4rem 0 1rem calc(var(--section-gap) / 2); */
   }
 
   i {
