@@ -1,8 +1,7 @@
 <script setup>
 import ToDoListItem from './ToDoListItem.vue'
 import ToDoInput from './ToDoInput.vue';
-import { ref } from 'vue';
-import { todos } from '../stores/todos'
+import { todos, doneTodos, activeTodos } from '../stores/todos'
 
 
 // Funktion: Aufgabe entfernen
@@ -14,32 +13,42 @@ function deleteTodo(index) {
 <template>
   <div class="todo-view">
     <p>Manage your tasks efficiently!</p>
-
     <!-- ToDoInput component for adding new tasks -->
-
   <ToDoInput/>
 
 <br/>
 
-  <h2>Open ToDos</h2>
-  <ul>
-    <ToDoListItem 
-      v-for="(todo, index) in todos" 
+  <h2>Active ToDos</h2>
+  <ul v-if="activeTodos.length > 0">
+    <!-- If the to-do exists, display it; if not, show a placeholder text. -->
+  
+      <ToDoListItem 
+      v-for="(todo, index) in activeTodos" 
       :key="index"
       :todo="todo"
       :index="index"
       @delete="deleteTodo" />
   </ul>
+  <p class="placeholder-text" v-else>
+        There are no to dos yet. Please add a task using the input above.
+  </p>
 
-  <!-- <h2>Done ToDos</h2>
+  <h2 v-if="doneTodos">Done ToDos</h2>
    <ul>
     <div class="doneitems">
+      <ToDoListItem 
+      v-for="(todo, index) in doneTodos" 
+      :key="index"
+      :todo="todo"
+      :index="index"
+      @delete="deleteTodo" />
+
       <li v-for="(doneTodo, index) in doneTodos" :key="'done-' + index">
         <span :class="{ done: doneTodo.done }">{{ doneTodo.text }}</span>
       </li>
     </div>
-    <ToDoListItem :todos="todos" @delete="deleteTodo" />
-  </ul> -->
+    
+  </ul>
 
   
 
@@ -53,5 +62,10 @@ function deleteTodo(index) {
 .todo-view {
   max-width: 1280px;
   min-width: 600px;
+}
+
+.placeholder-text {
+  font-style: italic;
+  color: #888;
 }
 </style>
