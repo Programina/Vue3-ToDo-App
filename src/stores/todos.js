@@ -9,5 +9,4 @@ export const doneTodos = computed(
   () =>
     todos.value
       .filter((todo) => todo.done)
-      .map((todo) => ({ ...todo, done: true })) // force done = true for display
 );

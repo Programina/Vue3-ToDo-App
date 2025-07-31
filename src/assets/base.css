@@ -119,3 +119,19 @@ body {
 .mb-3 { margin-bottom: calc(var(--spacer) * 3) !important; }
 .mb-4 { margin-bottom: calc(var(--spacer) * 4) !important; }
 .mb-5 { margin-bottom: calc(var(--spacer) * 5) !important; }
+
+/* Margin Left */
+.ml-0 { margin-left: 0 !important; }
+.ml-1 { margin-left: calc(var(--spacer) * 1) !important; }
+.ml-2 { margin-left: calc(var(--spacer) * 2) !important; }
+.ml-3 { margin-left: calc(var(--spacer) * 3) !important; }
+.ml-4 { margin-left: calc(var(--spacer) * 4) !important; }
+.ml-5 { margin-left: calc(var(--spacer) * 5) !important; }
+
+/* Margin Right */
+.mr-0 { margin-right: 0 !important; }
+.mr-1 { margin-right: calc(var(--spacer) * 1) !important; }
+.mr-2 { margin-right: calc(var(--spacer) * 2) !important; }
+.mr-3 { margin-right: calc(var(--spacer) * 3) !important; }
+.mr-4 { margin-right: calc(var(--spacer) * 4) !important; }
+.mr-5 { margin-right: calc(var(--spacer) * 5) !important; }
