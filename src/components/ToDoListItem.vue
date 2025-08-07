@@ -34,24 +34,22 @@ const props = defineProps({
   align-items: center;
   min-width: 500px;
   margin-top: 2rem;
+}
 
-  input {
-    margin-right: 1rem;
-    width: 20px;
-    height: 20px;
-  }
+.item input {
+  margin-right: 1rem;
+  width: 20px;
+  height: 20px;
+}
 
-  button {
-    margin-left: auto;
-    padding: 0;
-    background-color: transparent;
+.item button {
+  margin-left: auto;
+  padding: 0;
+  background-color: transparent;
     border: none;
     border-radius: 4px;
     cursor: pointer;
   }
-
-
-}
 
 
 h3 {
@@ -66,7 +64,6 @@ h3 {
     margin-top: 0;
     /* padding: 0.4rem 0 1rem calc(var(--section-gap) / 2); */
   }
-
   
 
   .item:before {
