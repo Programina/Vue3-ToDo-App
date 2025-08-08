@@ -1,11 +1,13 @@
+
 <script setup>
+// Main input field, parents:  HomeView > ToDoView > ToDoInput 
 import { ref } from "vue";
 import { todos } from "../stores/todos";
 
-// Reaktive Werte
+// Reactive values
 const newTodo = ref("");
 
-// Funktion: Aufgabe hinzufügen
+// Function: adding a task
 function addTodo() {
   if (newTodo.value.trim()) {
     todos.value.push({ text: newTodo.value, done: false });
@@ -16,11 +18,10 @@ function addTodo() {
 </script>
 
 <template>
-
-  <h3></h3>
-
+  <br />
+  
   <form @submit.prevent="addTodo" class="mt-5 mb-2">
-    <label for="todoitem">Enter a task: </label>
+    <label for="todoitem"><i>ToDoInput.vue</i>  Enter a task: </label>
     <input type="text" name="todoitem" id="todoitem" v-model="newTodo" placeholder="Neue Aufgabe newTodo..."
       max-length="10" />
 

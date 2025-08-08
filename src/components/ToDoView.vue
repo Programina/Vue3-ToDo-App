@@ -2,6 +2,7 @@
 import ToDoListItem from './ToDoListItem.vue'
 import ToDoInput from './ToDoInput.vue';
 import { todos, doneTodos, activeTodos } from '../stores/todos'
+import EditableTitle from './atomicomponents/EditableTitle.vue';
 
 
 // Funktion: Aufgabe entfernen
@@ -14,13 +15,16 @@ function deleteTodo(index) {
   <div class="todo-view">
 
     <div class="left-view-wrapper">
-      <h2>Manage your tasks efficiently!</h2>
+      <h2>ToDoView.vue</h2>
       <!-- ToDoInput component for adding new tasks -->
       <ToDoInput />
     </div>
 
     <div class="right-view-wrapper">
-      <h2>Active ToDos</h2>
+      <h2>EDITABLe (ToDoView.vue)</h2>
+      <EditableTitle/>
+
+      <h3>Active </h3>
       <ul v-if="activeTodos.length > 0">
         <!-- If the to-do exists, display it; if not, show a placeholder text. -->
 
